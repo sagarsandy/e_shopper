@@ -6,71 +6,107 @@ import '../models/product.dart';
 class ProductListWidget extends StatelessWidget {
   final List<Product> allProducts = [
     Product(
-      id: "1",
-      title: "Product One",
-      description: "This is product one description",
-      price: 11.11,
+      id: "9",
+      title: "Wonderful Teacher Chocolate Photo Cake",
+      description:
+          "This is a chocolate flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 55.55,
       imageUrl:
-          "https://i1.fnp.com/images/pr/l/cream-drop-chocolate-cake_1.jpg",
+          "https://i1.fnp.com/images/pr/l/wonderful-teacher-photo-cake_1.jpg",
     ),
     Product(
-      id: "2",
-      title: "Product Two",
-      description: "This is product two description",
-      price: 22.22,
+      id: "10",
+      title: "Ariel Cartoon Pineapple Photo Cake",
+      description:
+          "This is a pineapple flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 55.55,
+      imageUrl:
+          "https://i1.fnp.com/images/pr/l/ariel-cartoon-pineapple-photo-cake_1.jpg",
+    ),
+    Product(
+      id: "11",
+      title: "Best Papa Chocolate Photo Cake",
+      description:
+          "This is a chocolate flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 55.55,
+      imageUrl:
+          "https://i1.fnp.com/images/pr/l/best-papa-chocolate-photo-cake_1.jpg",
+    ),
+    Product(
+      id: "12",
+      title: "Stay Quarantine Pineapple Cake",
+      description:
+          "This is a pineapple flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 55.55,
+      imageUrl:
+          "https://i1.fnp.com/images/pr/l/stay-quarantine-pineapple-cake_1.jpg",
+    ),
+    Product(
+      id: "1",
+      title: "Pineapple Cake",
+      description:
+          "This is a pineapple flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 11.11,
       imageUrl: "https://i1.fnp.com/images/pr/l/pineapple-cake_1.jpg",
     ),
     Product(
-      id: "3",
-      title: "Product three",
-      description: "this is product three description",
-      price: 33.33,
-      imageUrl: "https://i1.fnp.com/images/pr/l/black-forest-cake_1.jpg",
-    ),
-    Product(
-      id: "4",
-      title: "Product Four",
-      description: "This is product four description",
-      price: 44.44,
-      imageUrl: "https://i1.fnp.com/images/pr/l/truffle-cake_1.jpg",
-    ),
-    Product(
-      id: "5",
-      title: "Product Five",
-      description: "THis is product five description",
-      price: 55.55,
-      imageUrl: "https://i1.fnp.com/images/pr/l/kit-kat-cake_1.jpg",
-    ),
-    Product(
       id: "2",
-      title: "Product Two",
-      description: "This is product two description",
+      title: "Chocolate Truffle Delicious Cake",
+      description:
+          "This is a truffle flavoured chocolate cake with a round shape and can serve up-to 6 people.",
       price: 22.22,
       imageUrl:
-          "https://i1.fnp.com/images/pr/l/crunchy-butterscotch-cake_1.jpg",
+          "https://i1.fnp.com/images/pr/l/chocolate-truffle-cream-cake_1.jpg",
     ),
     Product(
       id: "3",
-      title: "Product three",
-      description: "this is product three description",
+      title: "Chocolate Cream Cake",
+      description:
+          "This is a chocolate flavoured cream cake with a round shape and can serve up-to 6 people.",
       price: 33.33,
-      imageUrl:
-          "https://i1.fnp.com/images/pr/l/valentine-heart-shaped-cake_1.jpg",
+      imageUrl: "https://i1.fnp.com/images/pr/l/chocolate-cream-cake_1.jpg",
     ),
     Product(
       id: "4",
-      title: "Product Four",
-      description: "This is product four description",
+      title: "Butterscotch Cake",
+      description:
+          "This is a Butterscotch flavoured cream cake with a round shape and can serve up-to 6 people.",
       price: 44.44,
-      imageUrl: "https://i1.fnp.com/images/pr/l/crunchy-kit-kat-cake_1.jpg",
+      imageUrl: "https://i1.fnp.com/images/pr/l/butterscotch-cake_1.jpg",
     ),
     Product(
       id: "5",
-      title: "Product Five",
-      description: "THis is product five description",
+      title: "Cream Drop & Cherry Pineapple Cake",
+      description:
+          "This is a pineapple flavoured cream cake with a round shape and can serve up-to 6 people.",
       price: 55.55,
       imageUrl:
-          "https://i1.fnp.com/images/pr/l/cream-drop-chocolate-cake_1.jpg",
+          "https://i1.fnp.com/images/pr/l/cream-drop-cherry-pineapple-cake_1.jpg",
+    ),
+    Product(
+      id: "6",
+      title: "Special Chocolate Cake",
+      description:
+          "This is a chocolate flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 22.22,
+      imageUrl:
+          "https://i1.fnp.com/images/pr/l/v19700101053000/special-chocolate-cake_1.jpg",
+    ),
+    Product(
+      id: "7",
+      title: "Cream Pista Pineapple Cake",
+      description:
+          "This is a pineapple flavoured cream pista cake with a round shape and can serve up-to 6 people.",
+      price: 33.33,
+      imageUrl: "https://i1.fnp.com/images/pr/l/cream-pista-cake_1.jpg",
+    ),
+    Product(
+      id: "8",
+      title: "Choco Lavash Cherry Pineapple Cake",
+      description:
+          "This is a pineapple flavoured cream cake with a round shape and can serve up-to 6 people.",
+      price: 44.44,
+      imageUrl: "https://i1.fnp.com/images/pr/l/choco-lavash-cherry-cake_1.jpg",
     ),
   ];
 
