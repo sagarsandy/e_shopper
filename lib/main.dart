@@ -1,4 +1,5 @@
-import 'package:e_shopper/screens/products_list.dart';
+import 'package:e_shopper/screens/home_screen.dart';
+import 'package:e_shopper/screens/products_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,21 +19,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Lato',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ProductList(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("E Shopper"),
-      ),
-      body: Center(
-        child: Text("Let's start shopping"),
-      ),
+      home: HomeScreen(),
     );
   }
 }

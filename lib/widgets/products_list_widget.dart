@@ -1,8 +1,9 @@
 import 'package:e_shopper/widgets/product_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../models/product.dart';
 
-class ProductList extends StatelessWidget {
+class ProductListWidget extends StatelessWidget {
   final List<Product> allProducts = [
     Product(
       id: "1",
@@ -75,17 +76,15 @@ class ProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Bakers Cakes"),
-      ),
-      body: GridView.builder(
+    return Container(
+      height: 250,
+      child: GridView.builder(
         padding: const EdgeInsets.all(10.0),
+        scrollDirection: Axis.horizontal,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+          crossAxisCount: 1,
           crossAxisSpacing: 15,
-          childAspectRatio: 2 / 2,
+          childAspectRatio: 2 / 1.7,
           mainAxisSpacing: 15,
         ),
         itemCount: allProducts.length,
