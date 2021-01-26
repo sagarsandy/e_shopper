@@ -15,8 +15,7 @@ class CategoriesListWidget extends StatelessWidget {
       id: "2",
       title: "Chocolates",
       description: "All type of chocolates available here !!",
-      imageUrl:
-          "https://static.archiesonline.com/public/images/product/large/8457.jpg",
+      imageUrl: "https://img.giftstoindia24x7.com/ASP_Img/GTI416432.jpg",
     ),
     Category(
       id: "3",

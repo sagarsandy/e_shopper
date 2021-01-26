@@ -1,4 +1,5 @@
 import 'package:e_shopper/models/category.dart';
+import 'package:e_shopper/screens/chocolate_list_screen.dart';
 import 'package:e_shopper/screens/products_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +29,24 @@ class CategoryWidget extends StatelessWidget {
         ],
       ),
       onTap: () => {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductListScreen(category.title),
-          ),
-        ),
+        if (category.title == "Chocolates")
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChocolateListScreen(category.title),
+              ),
+            ),
+          }
+        else
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductListScreen(category.title),
+              ),
+            ),
+          }
       },
     );
   }
