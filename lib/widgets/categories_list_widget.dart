@@ -19,10 +19,10 @@ class CategoriesListWidget extends StatelessWidget {
     ),
     Category(
       id: "3",
-      title: "Drinks",
+      title: "Juice",
       description: "Cool cool.. Cool drinks",
       imageUrl:
-          "https://content3.jdmagicbox.com/comp/def_content/soft-drink-retailers/shutterstock-284053361-soft-drink-retailers-2-dyp5o.jpg?clr=3e3e28",
+          "https://www.news-medical.net/image.axd?picture=2018%2F4%2Fshutterstock_1By_stockcreations.jpg",
     ),
     Category(
       id: "4",
@@ -47,10 +47,10 @@ class CategoriesListWidget extends StatelessWidget {
     ),
     Category(
       id: "7",
-      title: "Juice",
+      title: "Drinks",
       description: "Single sip juice",
       imageUrl:
-          "https://www.news-medical.net/image.axd?picture=2018%2F4%2Fshutterstock_1By_stockcreations.jpg",
+          "https://content3.jdmagicbox.com/comp/def_content/soft-drink-retailers/shutterstock-284053361-soft-drink-retailers-2-dyp5o.jpg?clr=3e3e28",
     ),
     Category(
       id: "8",
@@ -82,7 +82,7 @@ class CategoriesListWidget extends StatelessWidget {
           mainAxisSpacing: 1,
         ),
         itemCount: allCategories.length,
-        itemBuilder: (ctx, i) => CategoryWidget(allCategories[i]),
+        itemBuilder: (ctx, i) => CategoryWidget(allCategories[i], i),
       ),
     );
   }

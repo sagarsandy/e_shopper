@@ -2,6 +2,7 @@ import 'package:e_shopper/widgets/cake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../models/product.dart';
+import 'package:sweetalert/sweetalert.dart';
 
 class ChocolateListScreen extends StatelessWidget {
   final String title;
@@ -148,6 +149,21 @@ class ChocolateListScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: GestureDetector(
+              onTap: () {
+                SweetAlert.show(context,
+                    title: "Wait..", subtitle: "This app is in beta testing");
+              },
+              child: Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,

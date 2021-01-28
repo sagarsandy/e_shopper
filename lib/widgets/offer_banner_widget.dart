@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class OfferBannerWidget extends StatelessWidget {
+  // Page view image items
   final _items = [
     "assets/images/offer-one.png",
     "assets/images/offer-two.png",
@@ -9,20 +10,26 @@ class OfferBannerWidget extends StatelessWidget {
     "assets/images/offer-four.png",
     "assets/images/offer-two.png",
   ];
+  // page controller
   final _pageController = PageController();
+
+  // current page value notifier
   final _currentPageNotifier = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        _buildPageView(),
-        _buildCircleIndicator(),
+        // Displaying page view
+        _renderPageView(),
+        // Displaying current page indicator
+        _renderCircleIndicator(),
       ],
     );
   }
 
-  _buildPageView() {
+  // Offers page view design
+  _renderPageView() {
     return Container(
       color: Colors.blueGrey,
       height: 150.0,
@@ -41,7 +48,8 @@ class OfferBannerWidget extends StatelessWidget {
     );
   }
 
-  _buildCircleIndicator() {
+  // Circle progress page indicator design
+  _renderCircleIndicator() {
     return Positioned(
       left: 0.0,
       right: 0.0,

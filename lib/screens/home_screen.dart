@@ -3,6 +3,7 @@ import 'package:e_shopper/widgets/categories_list_widget.dart';
 import 'package:e_shopper/widgets/offer_banner_widget.dart';
 import 'package:e_shopper/widgets/products_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:sweetalert/sweetalert.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,11 +18,27 @@ class HomeScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: GestureDetector(
+              onTap: () {
+                SweetAlert.show(context,
+                    title: "Wait..", subtitle: "This app is in beta testing");
+              },
+              child: Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Rendering offers banner widget
             OfferBannerWidget(),
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 10),
@@ -31,6 +48,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
             ),
+            // Rendering categories list widget
             CategoriesListWidget(),
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
