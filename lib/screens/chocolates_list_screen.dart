@@ -1,13 +1,14 @@
 import 'package:e_shopper/widgets/cake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ribbon/ribbon.dart';
 import '../models/product.dart';
 import 'package:sweetalert/sweetalert.dart';
 
-class ChocolateListScreen extends StatelessWidget {
+class ChocolatesListScreen extends StatelessWidget {
   final String title;
 
-  ChocolateListScreen(this.title);
+  ChocolatesListScreen(this.title);
 
   final List<Product> allProducts = [
     Product(
@@ -165,83 +166,92 @@ class ChocolateListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: ListWheelScrollView.useDelegate(
-          itemExtent: 190,
-          childDelegate: ListWheelChildBuilderDelegate(
-            childCount: allProducts.length,
-            builder: (context, index) => Container(
-              // color: Colors.cyan,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
+      body: ListView.builder(
+        itemCount: allProducts.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(10),
+            child: Ribbon(
+              nearLength: 45,
+              farLength: 85,
+              title: "\$" + allProducts[index].price.toString(),
+              color: Colors.orangeAccent,
+              titleStyle: TextStyle(color: Colors.white),
+              location: RibbonLocation.topEnd,
+              child: Card(
+                elevation: 90.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                shadowColor: Colors.black,
                 child: Container(
-                  height: 190,
-                  width: MediaQuery.of(context).size.width - 30,
-                  color: Colors.orange[50],
+                  height: 207,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 140,
-                            width: 200,
-                            color: Colors.red,
-                            child: Image.network(
-                              allProducts[index].imageUrl,
-                              fit: BoxFit.fill,
+                      Container(
+                        height: 110,
+                        margin: EdgeInsets.only(top: 7),
+                        width: MediaQuery.of(context).size.width - 60,
+                        child: Image.network(
+                          allProducts[index].imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ConstrainedBox(
+                              constraints: BoxConstraints(
+                                  maxWidth:
+                                      MediaQuery.of(context).size.width - 140),
+                              child: Text(
+                                allProducts[index].title,
+                                maxLines: 3,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            height: 100,
-                            width: 120,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  allProducts[index].title,
-                                  maxLines: 3,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  "\$" + allProducts[index].price.toString(),
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Container(
-                                    color: Colors.orange,
-                                    width: 80,
-                                    height: 20,
-                                    child: Center(
-                                      child: Text(
-                                        "Buy Now",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: InkWell(
+                                splashColor: Colors.orange,
+                                onTap: () {
+                                  SweetAlert.show(
+                                    context,
+                                    title: "Order Placed!!",
+                                    subtitle:
+                                        "Will deliver to default location",
+                                    style: SweetAlertStyle.success,
+                                  );
+                                },
+                                child: Container(
+                                  color: Colors.greenAccent,
+                                  width: 80,
+                                  height: 25,
+                                  child: Center(
+                                    child: Text(
+                                      "Buy Now",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       Container(
                         margin:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        height: 40,
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        height: 35,
                         child: Text(allProducts[index].description),
                       ),
                     ],
@@ -249,8 +259,8 @@ class ChocolateListScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

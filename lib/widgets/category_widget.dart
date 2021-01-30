@@ -1,5 +1,5 @@
 import 'package:e_shopper/models/category.dart';
-import 'package:e_shopper/screens/chocolate_list_screen.dart';
+import 'package:e_shopper/screens/chocolates_list_screen.dart';
 import 'package:e_shopper/screens/coming_soon_screen.dart';
 import 'package:e_shopper/screens/juice_list_screen.dart';
 import 'package:e_shopper/screens/products_list_screen.dart';
@@ -44,7 +44,7 @@ class CategoryWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ChocolateListScreen(category.title),
+                builder: (context) => ChocolatesListScreen(category.title),
               ),
             ),
           }
