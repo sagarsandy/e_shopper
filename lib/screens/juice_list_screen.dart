@@ -1,6 +1,6 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_shopper/screens/order_product_screen.dart';
+import 'package:e_shopper/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../models/product.dart';
@@ -143,37 +143,9 @@ class JuiceListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFf1f2f7),
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white, //change your color here
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: GestureDetector(
-              onTap: () {
-                AwesomeDialog(
-                  context: context,
-                  animType: AnimType.SCALE,
-                  headerAnimationLoop: false,
-                  title: 'Hey..!!',
-                  desc: 'We are still in beta testing',
-                )..show();
-              },
-              child: Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+      appBar: PreferredSize(
+        child: AppBarWidget(title),
+        preferredSize: const Size.fromHeight(57),
       ),
       body: Center(
         child: CarouselSlider(

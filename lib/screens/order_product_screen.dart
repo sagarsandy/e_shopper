@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/models/product.dart';
+import 'package:e_shopper/widgets/app_bar_widget.dart';
 import 'package:e_shopper/widgets/cake_order_form_widget.dart';
 import 'package:e_shopper/widgets/juice_order_form_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,37 +18,9 @@ class OrderProductScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color(0xFFf1f2f7),
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white, //change your color here
-        ),
-        title: Text(
-          "Place Order",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: GestureDetector(
-              onTap: () {
-                AwesomeDialog(
-                  context: context,
-                  animType: AnimType.SCALE,
-                  headerAnimationLoop: false,
-                  title: 'Hey..!!',
-                  desc: 'We are still in beta testing',
-                )..show();
-              },
-              child: Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+      appBar: PreferredSize(
+        child: AppBarWidget("Place Order"),
+        preferredSize: const Size.fromHeight(57),
       ),
       body: SingleChildScrollView(
         child: Column(

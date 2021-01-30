@@ -1,5 +1,5 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/screens/products_list_screen.dart';
+import 'package:e_shopper/widgets/app_bar_widget.dart';
 import 'package:e_shopper/widgets/categories_list_widget.dart';
 import 'package:e_shopper/widgets/offer_banner_widget.dart';
 import 'package:e_shopper/widgets/products_list_widget.dart';
@@ -10,34 +10,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(
-          "E-Shopper",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: GestureDetector(
-              onTap: () {
-                AwesomeDialog(
-                  context: context,
-                  animType: AnimType.SCALE,
-                  headerAnimationLoop: false,
-                  title: 'Hey..!!',
-                  desc: 'We are still in beta testing',
-                )..show();
-              },
-              child: Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+      appBar: PreferredSize(
+        child: AppBarWidget("E-Bakers"),
+        preferredSize: const Size.fromHeight(57),
       ),
       body: SingleChildScrollView(
         child: Column(
