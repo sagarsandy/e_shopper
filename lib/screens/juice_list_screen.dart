@@ -1,14 +1,81 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_shopper/screens/order_product_screen.dart';
 import 'package:e_shopper/widgets/app_bar_widget.dart';
+import 'package:e_shopper/widgets/juice_order_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../models/product.dart';
 
 class JuiceListScreen extends StatelessWidget {
   final String title;
-
   JuiceListScreen(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFf1f2f7),
+      appBar: PreferredSize(
+        child: AppBarWidget(title),
+        preferredSize: const Size.fromHeight(57),
+      ),
+      body: Center(
+        child: CarouselSlider(
+          items: allProducts.map((product) {
+            return Builder(builder: (BuildContext context) {
+              return Container(
+                width: MediaQuery.of(context).size.width - 60,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Rendering juice image widget
+                    Card(
+                      elevation: 90,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      shadowColor: Colors.black,
+                      child: Container(
+                        height: 390,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(40),
+                          child: Image.network(
+                            product.imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Rendering juice title widget
+                    Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 1),
+                        child: Text(
+                          product.title,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Rendering juice order button widget
+                    JuiceOrderButtonWidget(product),
+                  ],
+                ),
+              );
+            });
+          }).toList(growable: false),
+          options: CarouselOptions(
+            height: MediaQuery.of(context).size.height - 100,
+            enlargeCenterPage: true,
+            initialPage: 0,
+            autoPlay: true,
+          ),
+        ),
+      ),
+    );
+  }
 
   final List<Product> allProducts = [
     Product(
@@ -138,88 +205,4 @@ class JuiceListScreen extends StatelessWidget {
           "https://previews.123rf.com/images/utima/utima1501/utima150100121/35911717-glass-of-carrot-juice-with-fruit-isolated-on-white-.jpg",
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFf1f2f7),
-      appBar: PreferredSize(
-        child: AppBarWidget(title),
-        preferredSize: const Size.fromHeight(57),
-      ),
-      body: Center(
-        child: CarouselSlider(
-          items: allProducts.map((product) {
-            return Builder(builder: (BuildContext context) {
-              return Container(
-                // color: Colors.black,
-                width: MediaQuery.of(context).size.width - 60,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 390,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          product.imageUrl,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 15),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 1),
-                        child: Text(
-                          product.title,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: GestureDetector(
-                        child: Container(
-                          height: 40,
-                          color: Colors.orange[400],
-                          child: Center(
-                            child: Text(
-                              "Order Now   (\$" +
-                                  product.price.toString() +
-                                  ")",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  OrderProductScreen(product, "juice"),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            });
-          }).toList(growable: false),
-          options: CarouselOptions(
-            height: MediaQuery.of(context).size.height - 100,
-            enlargeCenterPage: true,
-            initialPage: 0,
-            autoPlay: true,
-          ),
-        ),
-      ),
-    );
-  }
 }

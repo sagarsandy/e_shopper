@@ -1,20 +1,26 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/models/product.dart';
 import 'package:e_shopper/widgets/app_bar_widget.dart';
 import 'package:e_shopper/widgets/cake_order_form_widget.dart';
 import 'package:e_shopper/widgets/juice_order_form_widget.dart';
+import 'package:e_shopper/widgets/product_order_button_widget.dart';
 import 'package:flutter/material.dart';
 
-class OrderProductScreen extends StatelessWidget {
+class OrderProductScreen extends StatefulWidget {
   final Product product;
   final String type;
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   OrderProductScreen(this.product, this.type);
+
+  @override
+  _OrderProductScreenState createState() => _OrderProductScreenState();
+}
+
+class _OrderProductScreenState extends State<OrderProductScreen> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     Widget renderFormWidget =
-        type == "cake" ? CakeOrderFormWidget() : JuiceOrderFormWidget();
+        widget.type == "cake" ? CakeOrderFormWidget() : JuiceOrderFormWidget();
 
     return Scaffold(
       backgroundColor: Color(0xFFf1f2f7),
@@ -23,70 +29,54 @@ class OrderProductScreen extends StatelessWidget {
         preferredSize: const Size.fromHeight(57),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Center(
-                child: ClipRRect(
-                  borderRadius: type == "cake"
-                      ? BorderRadius.circular(90)
-                      : BorderRadius.circular(30),
-                  child: Container(
-                    height: 180,
-                    child: Image.network(product.imageUrl),
+        child: GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
+
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Column(
+            children: [
+              // Rendering product image widget
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: widget.type == "cake"
+                        ? BorderRadius.circular(90)
+                        : BorderRadius.circular(30),
+                    child: Container(
+                      height: 180,
+                      child: Image.network(widget.product.imageUrl),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: 40,
-              child: Text(
-                product.title,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              // Rendering product title widget
+              Container(
+                height: 40,
+                child: Text(
+                  widget.product.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Form(
-                key: _formKey,
-                child: renderFormWidget,
-              ),
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: GestureDetector(
-        child: Container(
-          height: 45,
-          color: Colors.orangeAccent,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Text(
-              "Place Order",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 22,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+              // Rendering order form widget
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Form(
+                  key: _formKey,
+                  child: renderFormWidget,
+                ),
+              )
+            ],
           ),
         ),
-        onTap: () {
-          if (_formKey.currentState.validate()) {
-            AwesomeDialog(
-              context: context,
-              animType: AnimType.SCALE,
-              headerAnimationLoop: false,
-              dialogType: DialogType.SUCCES,
-              title: 'Order Placed !!',
-              desc: 'We will deliver this as soon as possible..',
-            )..show();
-          }
-        },
       ),
+      // Rendering product order button widget
+      bottomNavigationBar: ProductOrderButtonWidget(_formKey),
     );
   }
 }

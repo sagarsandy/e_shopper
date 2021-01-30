@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/widgets/app_bar_widget.dart';
+import 'package:e_shopper/widgets/chocolate_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ribbon/ribbon.dart';
@@ -7,8 +8,64 @@ import '../models/product.dart';
 
 class ChocolatesListScreen extends StatelessWidget {
   final String title;
-
   ChocolatesListScreen(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFf1f2f7),
+      appBar: PreferredSize(
+        child: AppBarWidget(title),
+        preferredSize: const Size.fromHeight(57),
+      ),
+      body: ListView.builder(
+        itemCount: allProducts.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(10),
+            child: Ribbon(
+              nearLength: 45,
+              farLength: 85,
+              title: "\$" + allProducts[index].price.toString(),
+              color: Colors.orangeAccent,
+              titleStyle: TextStyle(color: Colors.white),
+              location: RibbonLocation.topEnd,
+              child: Card(
+                elevation: 90.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                shadowColor: Colors.black,
+                child: Container(
+                  height: 207,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 110,
+                        margin: EdgeInsets.only(top: 7),
+                        width: MediaQuery.of(context).size.width - 60,
+                        child: Image.network(
+                          allProducts[index].imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      ChocolateDetailsWidget(allProducts[index].title),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        height: 35,
+                        child: Text(allProducts[index].description),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   final List<Product> allProducts = [
     Product(
@@ -134,113 +191,4 @@ class ChocolatesListScreen extends StatelessWidget {
           "https://images-na.ssl-images-amazon.com/images/I/41Qyea9EesL.jpg",
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFf1f2f7),
-      appBar: PreferredSize(
-        child: AppBarWidget(title),
-        preferredSize: const Size.fromHeight(57),
-      ),
-      body: ListView.builder(
-        itemCount: allProducts.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(10),
-            child: Ribbon(
-              nearLength: 45,
-              farLength: 85,
-              title: "\$" + allProducts[index].price.toString(),
-              color: Colors.orangeAccent,
-              titleStyle: TextStyle(color: Colors.white),
-              location: RibbonLocation.topEnd,
-              child: Card(
-                elevation: 90.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                shadowColor: Colors.black,
-                child: Container(
-                  height: 207,
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 110,
-                        margin: EdgeInsets.only(top: 7),
-                        width: MediaQuery.of(context).size.width - 60,
-                        child: Image.network(
-                          allProducts[index].imageUrl,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        height: 40,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
-                                  maxWidth:
-                                      MediaQuery.of(context).size.width - 140),
-                              child: Text(
-                                allProducts[index].title,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: InkWell(
-                                splashColor: Colors.orange,
-                                onTap: () {
-                                  AwesomeDialog(
-                                    context: context,
-                                    animType: AnimType.SCALE,
-                                    headerAnimationLoop: false,
-                                    dialogType: DialogType.SUCCES,
-                                    title: 'Order Placed !!',
-                                    desc:
-                                        'Will be delivered to default location',
-                                  )..show();
-                                },
-                                child: Container(
-                                  color: Colors.greenAccent,
-                                  width: 80,
-                                  height: 25,
-                                  child: Center(
-                                    child: Text(
-                                      "Buy Now",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        height: 35,
-                        child: Text(allProducts[index].description),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
 }

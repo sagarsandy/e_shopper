@@ -15,11 +15,13 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Color titleColor = Colors.black;
     if (index > 2) {
+      // Coming soon widgets
       titleColor = Colors.grey;
     }
     return GestureDetector(
       child: Column(
         children: [
+          // Rendering category image widget
           Container(
             height: 80,
             width: 80,
@@ -31,6 +33,7 @@ class CategoryWidget extends StatelessWidget {
               ),
             ),
           ),
+          // Rendering category title text widget
           Text(
             category.title,
             style: TextStyle(color: titleColor),

@@ -20,6 +20,7 @@ class ProductDetailsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Rendering product image widget
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
@@ -30,6 +31,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Rendering product title text widget
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -38,6 +40,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
             ),
+            // Rendering product description widget
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -48,6 +51,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Rendering product features using bullet text widgets
             BulletTextWidget("Available in different sizes"),
             BulletTextWidget("Can be prepared with and without egg"),
             BulletTextWidget("Will be delivered to any location in 2 hours"),
@@ -55,6 +59,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      // Rendering Order now button widget, to navigate to order screen
       bottomNavigationBar: GestureDetector(
         child: Container(
           height: 45,
@@ -77,6 +82,7 @@ class ProductDetailsScreen extends StatelessWidget {
     );
   }
 
+  // Navigation to product order screen
   navigateToOrderProductScreen(context) {
     Navigator.push(
       context,

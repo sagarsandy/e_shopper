@@ -9,6 +9,23 @@ class ProductListScreen extends StatelessWidget {
 
   ProductListScreen(this.title);
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFf1f2f7),
+      appBar: PreferredSize(
+        child: AppBarWidget(title),
+        preferredSize: const Size.fromHeight(57),
+      ),
+      // Rendering product list widget
+      body: ListView.builder(
+        padding: const EdgeInsets.all(10.0),
+        itemCount: allProducts.length,
+        itemBuilder: (ctx, i) => CakeWidget(allProducts[i]),
+      ),
+    );
+  }
+
   final List<Product> allProducts = [
     Product(
       id: "9",
@@ -114,20 +131,4 @@ class ProductListScreen extends StatelessWidget {
       imageUrl: "https://i1.fnp.com/images/pr/l/choco-lavash-cherry-cake_1.jpg",
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFf1f2f7),
-      appBar: PreferredSize(
-        child: AppBarWidget(title),
-        preferredSize: const Size.fromHeight(57),
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: allProducts.length,
-        itemBuilder: (ctx, i) => CakeWidget(allProducts[i]),
-      ),
-    );
-  }
 }

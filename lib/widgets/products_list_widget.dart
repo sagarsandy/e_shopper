@@ -4,6 +4,25 @@ import 'package:flutter/rendering.dart';
 import '../models/product.dart';
 
 class ProductListWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      child: GridView.builder(
+        padding: const EdgeInsets.all(10.0),
+        scrollDirection: Axis.horizontal,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          crossAxisSpacing: 15,
+          childAspectRatio: 2 / 1.7,
+          mainAxisSpacing: 15,
+        ),
+        itemCount: allProducts.length,
+        itemBuilder: (ctx, i) => ProductWidget(allProducts[i]),
+      ),
+    );
+  }
+
   final List<Product> allProducts = [
     Product(
       id: "9",
@@ -109,23 +128,4 @@ class ProductListWidget extends StatelessWidget {
       imageUrl: "https://i1.fnp.com/images/pr/l/choco-lavash-cherry-cake_1.jpg",
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      child: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        scrollDirection: Axis.horizontal,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          crossAxisSpacing: 15,
-          childAspectRatio: 2 / 1.7,
-          mainAxisSpacing: 15,
-        ),
-        itemCount: allProducts.length,
-        itemBuilder: (ctx, i) => ProductWidget(allProducts[i]),
-      ),
-    );
-  }
 }

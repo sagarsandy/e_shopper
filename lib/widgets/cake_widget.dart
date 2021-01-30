@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class CakeWidget extends StatelessWidget {
   final Product product;
-
   CakeWidget(this.product);
 
+  // Navigation to product details screen
   navigateToProductDetailsScreen(context) {
     Navigator.push(
       context,
@@ -40,12 +40,13 @@ class CakeWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      // Rendering product title text widget
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           width: 200,
                           child: Text(
-                            product.title + " Hello world this is long text",
+                            product.title,
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             style: TextStyle(
@@ -56,6 +57,7 @@ class CakeWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Rendering product price text widget
                       Container(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8.0),
@@ -75,6 +77,7 @@ class CakeWidget extends StatelessWidget {
               onTap: () => navigateToProductDetailsScreen(context),
             ),
           ),
+          // Rendering cake image widget
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -103,7 +106,7 @@ class CakeWidget extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

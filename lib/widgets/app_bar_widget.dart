@@ -8,9 +8,12 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      // Icon theme set to white, so that navigation back button color will be white
       iconTheme: IconThemeData(
-        color: Colors.white, //change your color here
+        color: Colors.white,
       ),
+      // Rendering title of the app bar
+      centerTitle: true,
       title: Text(
         title,
         style: TextStyle(
@@ -18,6 +21,7 @@ class AppBarWidget extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
+      // Rendering app bar info icon
       actions: [
         Padding(
           padding: EdgeInsets.all(10),

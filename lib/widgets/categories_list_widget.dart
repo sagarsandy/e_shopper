@@ -3,6 +3,25 @@ import 'package:e_shopper/widgets/category_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesListWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 340,
+      child: GridView.builder(
+        padding: const EdgeInsets.all(10.0),
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 15,
+          childAspectRatio: 3 / 3,
+          mainAxisSpacing: 1,
+        ),
+        itemCount: allCategories.length,
+        itemBuilder: (ctx, i) => CategoryWidget(allCategories[i], i),
+      ),
+    );
+  }
+
   final List<Category> allCategories = [
     Category(
       id: "1",
@@ -67,23 +86,4 @@ class CategoriesListWidget extends StatelessWidget {
           "https://www.dailynews.com/wp-content/uploads/2020/07/iStock-1154896831-1.jpg?w=300",
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 340,
-      child: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        physics: NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 15,
-          childAspectRatio: 3 / 3,
-          mainAxisSpacing: 1,
-        ),
-        itemCount: allCategories.length,
-        itemBuilder: (ctx, i) => CategoryWidget(allCategories[i], i),
-      ),
-    );
-  }
 }

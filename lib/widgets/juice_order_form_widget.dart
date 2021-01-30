@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
 
-class JuiceOrderFormWidget extends StatelessWidget {
-  final TextEditingController _chefMessageTEC = TextEditingController();
-  final TextEditingController _sizeMessageTEC = TextEditingController();
-  final TextEditingController _priceMessageTEC = TextEditingController();
-  final TextEditingController _adrsMessageTEC = TextEditingController();
+class JuiceOrderFormWidget extends StatefulWidget {
+  @override
+  _JuiceOrderFormWidgetState createState() => _JuiceOrderFormWidgetState();
+}
+
+class _JuiceOrderFormWidgetState extends State<JuiceOrderFormWidget> {
+  TextEditingController _chefMessageTEC;
+  TextEditingController _sizeMessageTEC;
+  TextEditingController _priceMessageTEC;
+  TextEditingController _adrsMessageTEC;
+
+  @override
+  void initState() {
+    _chefMessageTEC = TextEditingController();
+    _sizeMessageTEC = TextEditingController();
+    _priceMessageTEC = TextEditingController();
+    _adrsMessageTEC = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _chefMessageTEC.dispose();
+    _sizeMessageTEC.dispose();
+    _priceMessageTEC.dispose();
+    _adrsMessageTEC.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

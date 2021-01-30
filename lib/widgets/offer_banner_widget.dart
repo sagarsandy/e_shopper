@@ -20,9 +20,9 @@ class OfferBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        // Displaying page view
+        // Rendering page view
         _renderPageView(),
-        // Displaying current page indicator
+        // Rendering circles for current page indicator
         _renderCircleIndicator(),
       ],
     );
