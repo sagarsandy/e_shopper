@@ -1,9 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/widgets/cake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ribbon/ribbon.dart';
 import '../models/product.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class ChocolatesListScreen extends StatelessWidget {
   final String title;
@@ -155,8 +155,13 @@ class ChocolatesListScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: GestureDetector(
               onTap: () {
-                SweetAlert.show(context,
-                    title: "Wait..", subtitle: "This app is in beta testing");
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.SCALE,
+                  headerAnimationLoop: false,
+                  title: 'Hey..!!',
+                  desc: 'We are still in beta testing',
+                )..show();
               },
               child: Icon(
                 Icons.info,
@@ -221,13 +226,15 @@ class ChocolatesListScreen extends StatelessWidget {
                               child: InkWell(
                                 splashColor: Colors.orange,
                                 onTap: () {
-                                  SweetAlert.show(
-                                    context,
-                                    title: "Order Placed!!",
-                                    subtitle:
-                                        "Will deliver to default location",
-                                    style: SweetAlertStyle.success,
-                                  );
+                                  AwesomeDialog(
+                                    context: context,
+                                    animType: AnimType.SCALE,
+                                    headerAnimationLoop: false,
+                                    dialogType: DialogType.SUCCES,
+                                    title: 'Order Placed !!',
+                                    desc:
+                                        'Will be delivered to default location',
+                                  )..show();
                                 },
                                 child: Container(
                                   color: Colors.greenAccent,

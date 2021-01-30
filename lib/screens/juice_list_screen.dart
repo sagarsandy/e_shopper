@@ -1,9 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_shopper/screens/order_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../models/product.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class JuiceListScreen extends StatelessWidget {
   final String title;
@@ -159,8 +159,13 @@ class JuiceListScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: GestureDetector(
               onTap: () {
-                SweetAlert.show(context,
-                    title: "Wait..", subtitle: "This app is in beta testing");
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.SCALE,
+                  headerAnimationLoop: false,
+                  title: 'Hey..!!',
+                  desc: 'We are still in beta testing',
+                )..show();
               },
               child: Icon(
                 Icons.info,

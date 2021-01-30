@@ -1,8 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/models/product.dart';
 import 'package:e_shopper/widgets/cake_order_form_widget.dart';
 import 'package:e_shopper/widgets/juice_order_form_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class OrderProductScreen extends StatelessWidget {
   final Product product;
@@ -33,8 +33,13 @@ class OrderProductScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: GestureDetector(
               onTap: () {
-                SweetAlert.show(context,
-                    title: "Wait..", subtitle: "This app is in beta testing");
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.SCALE,
+                  headerAnimationLoop: false,
+                  title: 'Hey..!!',
+                  desc: 'We are still in beta testing',
+                )..show();
               },
               child: Icon(
                 Icons.info,
@@ -98,11 +103,14 @@ class OrderProductScreen extends StatelessWidget {
         ),
         onTap: () {
           if (_formKey.currentState.validate()) {
-            SweetAlert.show(
-              context,
-              title: "Order Placed!!",
-              style: SweetAlertStyle.success,
-            );
+            AwesomeDialog(
+              context: context,
+              animType: AnimType.SCALE,
+              headerAnimationLoop: false,
+              dialogType: DialogType.SUCCES,
+              title: 'Order Placed !!',
+              desc: 'We will deliver this as soon as possible..',
+            )..show();
           }
         },
       ),

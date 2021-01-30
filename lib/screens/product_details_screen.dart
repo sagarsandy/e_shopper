@@ -1,8 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/models/product.dart';
 import 'package:e_shopper/screens/order_product_screen.dart';
 import 'package:e_shopper/widgets/bullet_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final Product product;
@@ -28,8 +28,13 @@ class ProductDetailsScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: GestureDetector(
               onTap: () {
-                SweetAlert.show(context,
-                    title: "Wait..", subtitle: "This app is in beta testing");
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.SCALE,
+                  headerAnimationLoop: false,
+                  title: 'Hey..!!',
+                  desc: 'We are still in beta testing',
+                )..show();
               },
               child: Icon(
                 Icons.info,

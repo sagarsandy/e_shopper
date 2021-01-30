@@ -1,9 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_shopper/screens/products_list_screen.dart';
 import 'package:e_shopper/widgets/categories_list_widget.dart';
 import 'package:e_shopper/widgets/offer_banner_widget.dart';
 import 'package:e_shopper/widgets/products_list_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -23,8 +23,13 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: GestureDetector(
               onTap: () {
-                SweetAlert.show(context,
-                    title: "Wait..", subtitle: "This app is in beta testing");
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.SCALE,
+                  headerAnimationLoop: false,
+                  title: 'Hey..!!',
+                  desc: 'We are still in beta testing',
+                )..show();
               },
               child: Icon(
                 Icons.info,
